@@ -99,6 +99,19 @@
       align-items:stretch;
     }
 
+    .placeholder-icon{
+      width:70%;
+      aspect-ratio:2 / 3;
+      margin:auto;
+      border-radius:12px;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      font-size:72px;
+      background:linear-gradient(180deg,#e8f5e9,#f1f8e9);
+      color:#43a047;
+    }
+
     .book{
       background:var(--card);
       border-radius:18px;
@@ -290,9 +303,56 @@
     }
 
     @media (max-width:600px){
-      header h1{ font-size:30px; }
-      .section-title{ font-size:26px; }
-      header p, .section-sub{ font-size:16px; }
+      .grid{
+        grid-template-columns:repeat(2,minmax(0,1fr));
+      }
+
+      .new-books .grid{
+        grid-template-columns:repeat(2,minmax(0,1fr));
+      }
+
+      .book p{
+        display:-webkit-box;
+        -webkit-line-clamp:2;
+        -webkit-box-orient:vertical;
+        overflow:hidden;
+        font-size:13px;
+      }
+
+      .featured-content p{
+        display:-webkit-box;
+        -webkit-line-clamp:3;
+        -webkit-box-orient:vertical;
+        overflow:hidden;
+      }
+
+      .book h3{
+        font-size:16px;
+      }
+
+      .button,
+      .button-disabled{
+        font-size:14px;
+        padding:11px 10px;
+      }
+
+      .top-links a{
+        padding:10px 14px;
+        font-size:14px;
+      }
+
+      .section-sub{
+        max-width:95%;
+        font-size:16px;
+      }
+
+      header h1{
+        font-size:30px;
+      }
+
+      .section-title{
+        font-size:26px;
+      }
     }
   </style>
 </head>
@@ -329,9 +389,7 @@
       <div class="featured-content">
         <div class="featured-badge">Featured Book</div>
         <h2>Magical Forest 2</h2>
-        <p>
-          A fantasy forest coloring book filled with magical atmosphere, rich details, and enchanted woodland scenes.
-        </p>
+        <p>A fantasy forest coloring book filled with magical atmosphere, rich details, and enchanted woodland scenes.</p>
         <a class="button" href="https://www.amazon.com/dp/B0GS4TH9Y4" target="_blank">Buy on Amazon</a>
       </div>
     </div>
@@ -378,7 +436,7 @@
 
       <div class="book">
         <div class="cover-wrap">
-          <img src="https://images-na.ssl-images-amazon.com/images/P/B0GCG1Y3DT.01._SCLZZZZZZZ_.jpg" alt="Chinese Adventures cover">
+          <div class="placeholder-icon" aria-label="Coming soon leaf icon">🍃</div>
         </div>
         <div class="book-content">
           <h3>Chinese Adventures</h3>
@@ -389,7 +447,7 @@
 
       <div class="book">
         <div class="cover-wrap">
-          <img src="https://images-na.ssl-images-amazon.com/images/P/B0GCG1Y3DT.01._SCLZZZZZZZ_.jpg" alt="Japanese Adventures cover">
+          <div class="placeholder-icon" aria-label="Coming soon leaf icon">🍃</div>
         </div>
         <div class="book-content">
           <h3>Japanese Adventures</h3>
@@ -400,7 +458,7 @@
 
       <div class="book">
         <div class="cover-wrap">
-          <img src="https://images-na.ssl-images-amazon.com/images/P/B0GS4TH9Y4.01._SCLZZZZZZZ_.jpg" alt="Magical Forest cover">
+          <div class="placeholder-icon" aria-label="Coming soon leaf icon">🍃</div>
         </div>
         <div class="book-content">
           <h3>Magical Forest</h3>
@@ -488,7 +546,7 @@
       </div>
 
       <div class="book">
-        <div class="cover-wrap"><img src="https://images-na.ssl-images-amazon.com/images/P/B0GS4TH9Y4.01._SCLZZZZZZZ_.jpg" alt="Magical Forest cover"></div>
+        <div class="cover-wrap"><div class="placeholder-icon" aria-label="Coming soon leaf icon">🍃</div></div>
         <div class="book-content">
           <h3>Magical Forest</h3>
           <p>The first Magical Forest volume is currently in review.</p>
@@ -585,7 +643,7 @@
       </div>
 
       <div class="book">
-        <div class="cover-wrap"><img src="https://images-na.ssl-images-amazon.com/images/P/B0GCG1Y3DT.01._SCLZZZZZZZ_.jpg" alt="Chinese Adventures cover"></div>
+        <div class="cover-wrap"><div class="placeholder-icon" aria-label="Coming soon leaf icon">🍃</div></div>
         <div class="book-content">
           <h3>Chinese Adventures</h3>
           <p>Badger and Mouse in a Chinese-inspired coloring journey.</p>
@@ -594,7 +652,7 @@
       </div>
 
       <div class="book">
-        <div class="cover-wrap"><img src="https://images-na.ssl-images-amazon.com/images/P/B0GCG1Y3DT.01._SCLZZZZZZZ_.jpg" alt="Japanese Adventures cover"></div>
+        <div class="cover-wrap"><div class="placeholder-icon" aria-label="Coming soon leaf icon">🍃</div></div>
         <div class="book-content">
           <h3>Japanese Adventures</h3>
           <p>Badger and Mouse in a Japanese-themed coloring adventure.</p>

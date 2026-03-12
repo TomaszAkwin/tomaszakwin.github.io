@@ -1,106 +1,599 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-<title>Tomasz Akwin</title>
-<meta charset="UTF-8">
-<style>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Tomasz Akwin | Coloring Books & Stories</title>
+  <meta name="description" content="Coloring books and illustrated stories by Tomasz Akwin: forest coloring books, mandalas, city coloring, Mouse & Badger adventures, and therapeutic animal stories." />
+  <style>
+    * { box-sizing: border-box; }
 
-body{
-font-family: Arial;
-background:#f2f2f2;
-text-align:center;
-margin:0;
-}
+    :root{
+      --text:#243224;
+      --muted:#5f6d5f;
+      --card:#ffffff;
+      --shadow:0 10px 24px rgba(0,0,0,0.10);
+      --accent:#ff9800;
+      --accent-hover:#f57c00;
+      --soft-green:#eef8ee;
+      --soft-gold:#fff9ef;
+      --soft-blue:#f4f7ff;
+    }
 
-header{
-background:#2f3e2f;
-color:white;
-padding:40px;
-font-size:32px;
-}
+    body{
+      margin:0;
+      font-family:Arial, Helvetica, sans-serif;
+      color:var(--text);
+      background:linear-gradient(180deg,var(--soft-green) 0%, var(--soft-gold) 45%, var(--soft-blue) 100%);
+      text-align:center;
+    }
 
-.book{
-margin:40px;
-}
+    a{ color:inherit; }
 
-img{
-width:200px;
-border-radius:10px;
-}
+    header{
+      background:linear-gradient(135deg,#43a047,#8bc34a,#ffd54f);
+      color:white;
+      padding:48px 20px 56px;
+      box-shadow:0 6px 20px rgba(0,0,0,0.12);
+    }
 
-button{
-background:#3b7a3b;
-color:white;
-padding:12px 20px;
-border:none;
-border-radius:6px;
-font-size:16px;
-cursor:pointer;
-}
+    header h1{
+      margin:0;
+      font-size:38px;
+      line-height:1.1;
+    }
 
-.social{
-margin:10px;
-}
-.social{
-margin:10px;
-}
+    header p{
+      margin:14px auto 0;
+      max-width:760px;
+      font-size:18px;
+      line-height:1.5;
+    }
 
-.books{
-display:grid;
-grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
-gap:30px;
-max-width:900px;
-margin:40px auto;
-}
+    .top-links{
+      margin-top:22px;
+      display:flex;
+      justify-content:center;
+      flex-wrap:wrap;
+      gap:12px;
+    }
 
-.book{
-text-align:center;
-}
+    .top-links a{
+      display:inline-block;
+      padding:12px 18px;
+      border-radius:999px;
+      background:rgba(255,255,255,0.22);
+      color:white;
+      text-decoration:none;
+      font-weight:bold;
+      border:1px solid rgba(255,255,255,0.35);
+    }
 
-</style>
+    .top-links a:hover{
+      background:rgba(255,255,255,0.32);
+    }
+
+    .section{
+      max-width:1200px;
+      margin:0 auto;
+      padding:36px 18px 10px;
+    }
+
+    .section-title{
+      font-size:30px;
+      margin:10px 0 8px;
+      color:#254525;
+    }
+
+    .section-sub{
+      max-width:820px;
+      margin:0 auto 28px;
+      font-size:17px;
+      color:#566656;
+      line-height:1.5;
+    }
+
+    .grid{
+      display:grid;
+      grid-template-columns:repeat(auto-fit,minmax(240px,1fr));
+      gap:24px;
+      align-items:stretch;
+    }
+
+    .book{
+      background:var(--card);
+      border-radius:18px;
+      overflow:hidden;
+      box-shadow:var(--shadow);
+      display:flex;
+      flex-direction:column;
+      height:100%;
+      text-align:left;
+    }
+
+    .cover-wrap{
+      background:linear-gradient(180deg,#f7faf7,#eef4ff);
+      padding:16px 16px 8px;
+    }
+
+    .book img{
+      width:100%;
+      aspect-ratio:2 / 3;
+      object-fit:cover;
+      border-radius:12px;
+      display:block;
+      background:#dfe7df;
+    }
+
+    .book-content{
+      padding:18px;
+      display:flex;
+      flex-direction:column;
+      height:100%;
+    }
+
+    .book h3{
+      margin:0 0 10px;
+      font-size:20px;
+      line-height:1.25;
+      color:#203420;
+    }
+
+    .book p{
+      margin:0 0 18px;
+      font-size:15px;
+      line-height:1.5;
+      color:var(--muted);
+      flex-grow:1;
+    }
+
+    .button,
+    .button-disabled{
+      display:inline-block;
+      text-decoration:none;
+      text-align:center;
+      padding:13px 18px;
+      border-radius:10px;
+      font-weight:bold;
+      font-size:16px;
+      margin-top:auto;
+    }
+
+    .button{
+      background:var(--accent);
+      color:white;
+    }
+
+    .button:hover{
+      background:var(--accent-hover);
+    }
+
+    .button-disabled{
+      background:#cfd8dc;
+      color:#607d8b;
+    }
+
+    .featured{
+      max-width:1200px;
+      margin:0 auto;
+      padding:32px 18px 0;
+    }
+
+    .featured-box{
+      display:grid;
+      grid-template-columns:320px 1fr;
+      gap:28px;
+      align-items:center;
+      background:white;
+      border-radius:22px;
+      box-shadow:0 12px 28px rgba(0,0,0,0.12);
+      overflow:hidden;
+      text-align:left;
+    }
+
+    .featured-cover{
+      padding:20px;
+      background:linear-gradient(180deg,#f7faf7,#eef4ff);
+    }
+
+    .featured-cover img{
+      width:100%;
+      border-radius:16px;
+      display:block;
+    }
+
+    .featured-content{
+      padding:28px 28px 28px 0;
+    }
+
+    .featured-badge{
+      display:inline-block;
+      background:#ffe0b2;
+      color:#7a4c00;
+      padding:8px 12px;
+      border-radius:999px;
+      font-weight:bold;
+      font-size:14px;
+      margin-bottom:12px;
+    }
+
+    .featured-content h2{
+      margin:0 0 12px;
+      font-size:34px;
+      line-height:1.15;
+      color:#203420;
+    }
+
+    .featured-content p{
+      margin:0 0 18px;
+      color:var(--muted);
+      font-size:17px;
+      line-height:1.6;
+      max-width:720px;
+    }
+
+    .note{
+      max-width:900px;
+      margin:24px auto 0;
+      font-size:14px;
+      color:#708070;
+      line-height:1.5;
+      padding:0 18px;
+    }
+
+    footer{
+      margin-top:48px;
+      padding:28px 18px 40px;
+      background:rgba(255,255,255,0.45);
+      font-size:14px;
+      color:#667366;
+    }
+
+    @media (max-width:820px){
+      .featured-box{
+        grid-template-columns:1fr;
+      }
+
+      .featured-content{
+        padding:0 20px 24px;
+      }
+
+      .featured-content h2{
+        font-size:28px;
+      }
+    }
+
+    @media (max-width:600px){
+      header h1{ font-size:30px; }
+      .section-title{ font-size:26px; }
+      header p, .section-sub{ font-size:16px; }
+    }
+  </style>
 </head>
-
 <body>
 
-<header>
-Tomasz Akwin  
-<br>
-Fantasy & Forest Coloring Books
-</header>
-<div class="books">
-<div class="book">
-<h2>Magical Forest</h2>
-<p>Fantasy coloring book with trolls, magic forests and creatures.</p>
-<a href="https://www.amazon.com">
-<button>View on Amazon</button>
-</a>
-</div>
+  <header>
+    <h1>Tomasz Akwin</h1>
+    <p>
+      Coloring books for kids & adults.<br>
+      Forest • Calm • Gentle stories.<br>
+      Available on Amazon (US • UK • PL)
+    </p>
 
-<div class="book">
-<h2>Magical Forest 2</h2>
-<p>More magical forest scenes and fantasy creatures.</p>
-<a href="https://www.amazon.com">
-<button>View on Amazon</button>
-</a>
-</div>
-</div>
-<h2>Follow</h2>
+    <div class="top-links">
+      <a href="https://www.amazon.com/stores/author/B0GCXRH3V4" target="_blank">Amazon Author</a>
+      <a href="https://www.amazon.com/s?k=tomasz+akwin" target="_blank">Amazon Books</a>
+      <a href="https://youtube.com/@tomaszakwin" target="_blank">YouTube</a>
+      <a href="https://instagram.com/akwin.books" target="_blank">Instagram</a>
+      <a href="https://beacons.ai/tomaszakwin" target="_blank">All My Links</a>
+    </div>
+  </header>
 
-<div class="social">
-<a href="https://youtube.com">YouTube</a>
-</div>
+  <section class="featured">
+    <div class="featured-box">
+      <div class="featured-cover">
+        <img src="https://images-na.ssl-images-amazon.com/images/P/B0GS4TH9Y4.01._SCLZZZZZZZ_.jpg" alt="Magical Forest 2 cover">
+      </div>
+      <div class="featured-content">
+        <div class="featured-badge">Featured Book</div>
+        <h2>Magical Forest 2</h2>
+        <p>
+          A fantasy forest coloring book filled with magical atmosphere, rich details, and enchanted woodland scenes.
+          A strong entry point for readers discovering the Tomasz Akwin catalog.
+        </p>
+        <a class="button" href="https://www.amazon.com/dp/B0GS4TH9Y4" target="_blank">View on Amazon</a>
+      </div>
+    </div>
+  </section>
 
-<div class="social">
-<a href="https://instagram.com">Instagram</a>
-</div>
+  <section class="section">
+    <h2 class="section-title">New Books</h2>
+    <p class="section-sub">Newest and newest-added titles first. This is the section to update whenever you release something fresh.</p>
+    <div class="grid">
 
-<div class="social">
-<a href="https://pinterest.com">Pinterest</a>
-</div>
+      <div class="book">
+        <div class="cover-wrap"><img src="https://images-na.ssl-images-amazon.com/images/P/B0GS4TH9Y4.01._SCLZZZZZZZ_.jpg" alt="Magical Forest 2 cover"></div>
+        <div class="book-content">
+          <h3>Magical Forest 2</h3>
+          <p>Fantasy-inspired forest coloring with magical atmosphere, detailed scenes, and enchanted woodland imagery.</p>
+          <a class="button" href="https://www.amazon.com/dp/B0GS4TH9Y4" target="_blank">View on Amazon</a>
+        </div>
+      </div>
 
-<div class="social">
-<a href="https://beacons.ai/tomaszakwin">All my links</a>
-</div>
+      <div class="book">
+        <div class="cover-wrap"><img src="https://images-na.ssl-images-amazon.com/images/P/B0GPJX31N4.01._SCLZZZZZZZ_.jpg" alt="Forest Cabins 2 cover"></div>
+        <div class="book-content">
+          <h3>Forest Cabins 2</h3>
+          <p>More intricate forest cabin scenes and nature details for adults who love calm woodland coloring pages.</p>
+          <a class="button" href="https://www.amazon.com/dp/B0GPJX31N4" target="_blank">View on Amazon</a>
+        </div>
+      </div>
+
+      <div class="book">
+        <div class="cover-wrap"><img src="https://images-na.ssl-images-amazon.com/images/P/B0GNLD5TWW.01._SCLZZZZZZZ_.jpg" alt="When the Water Got Loud cover"></div>
+        <div class="book-content">
+          <h3>When the Water Got Loud</h3>
+          <p>A new journey where Mouse and Badger face rising waters and protect their forest home.</p>
+          <a class="button" href="https://www.amazon.com/dp/B0GNLD5TWW" target="_blank">View on Amazon</a>
+        </div>
+      </div>
+
+      <div class="book">
+        <div class="cover-wrap"><img src="https://images-na.ssl-images-amazon.com/images/P/B0GCG1Y3DT.01._SCLZZZZZZZ_.jpg" alt="Chinese Adventures cover"></div>
+        <div class="book-content">
+          <h3>Chinese Adventures</h3>
+          <p>Badger and Mouse in a Chinese-inspired coloring journey full of playful discovery.</p>
+          <span class="button-disabled">In Review</span>
+        </div>
+      </div>
+
+      <div class="book">
+        <div class="cover-wrap"><img src="https://images-na.ssl-images-amazon.com/images/P/B0GCG1Y3DT.01._SCLZZZZZZZ_.jpg" alt="Japanese Adventures cover"></div>
+        <div class="book-content">
+          <h3>Japanese Adventures</h3>
+          <p>Badger and Mouse in a Japanese-themed coloring adventure filled with culture, scenery, and charm.</p>
+          <span class="button-disabled">In Review</span>
+        </div>
+      </div>
+
+      <div class="book">
+        <div class="cover-wrap"><img src="https://images-na.ssl-images-amazon.com/images/P/B0GS4TH9Y4.01._SCLZZZZZZZ_.jpg" alt="Magical Forest cover"></div>
+        <div class="book-content">
+          <h3>Magical Forest</h3>
+          <p>The first Magical Forest volume is currently in review and will be added as soon as it goes live.</p>
+          <span class="button-disabled">Coming Soon</span>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <section class="section">
+    <h2 class="section-title">Forest Coloring Books</h2>
+    <p class="section-sub">Relaxing forests, cabins, paths, and fantasy woodland scenes designed for calm, focus, and creative escape.</p>
+    <div class="grid">
+
+      <div class="book">
+        <div class="cover-wrap"><img src="https://images-na.ssl-images-amazon.com/images/P/B0GNZ766LK.01._SCLZZZZZZZ_.jpg" alt="Forest Paths of the World cover"></div>
+        <div class="book-content">
+          <h3>Forest Paths of the World</h3>
+          <p>Intricate forest paths and scenic woodland journeys designed for relaxing and mindful coloring.</p>
+          <a class="button" href="https://www.amazon.com/dp/B0GNZ766LK" target="_blank">View on Amazon</a>
+        </div>
+      </div>
+
+      <div class="book">
+        <div class="cover-wrap"><img src="https://images-na.ssl-images-amazon.com/images/P/B0GBV2DFCX.01._SCLZZZZZZZ_.jpg" alt="Forest Cabins cover"></div>
+        <div class="book-content">
+          <h3>Forest Cabins</h3>
+          <p>A relaxing forest cabins coloring book with peaceful woodland environments and cozy cabin scenes.</p>
+          <a class="button" href="https://www.amazon.com/dp/B0GBV2DFCX" target="_blank">View on Amazon</a>
+        </div>
+      </div>
+
+      <div class="book">
+        <div class="cover-wrap"><img src="https://images-na.ssl-images-amazon.com/images/P/B0GPJX31N4.01._SCLZZZZZZZ_.jpg" alt="Forest Cabins 2 cover"></div>
+        <div class="book-content">
+          <h3>Forest Cabins 2</h3>
+          <p>More intricate forest cabin scenes and nature details for adults who love calm woodland coloring pages.</p>
+          <a class="button" href="https://www.amazon.com/dp/B0GPJX31N4" target="_blank">View on Amazon</a>
+        </div>
+      </div>
+
+      <div class="book">
+        <div class="cover-wrap"><img src="https://images-na.ssl-images-amazon.com/images/P/B0GS4TH9Y4.01._SCLZZZZZZZ_.jpg" alt="Magical Forest 2 cover"></div>
+        <div class="book-content">
+          <h3>Magical Forest 2</h3>
+          <p>Fantasy-inspired forest coloring with magical atmosphere, detailed scenes, and enchanted woodland imagery.</p>
+          <a class="button" href="https://www.amazon.com/dp/B0GS4TH9Y4" target="_blank">View on Amazon</a>
+        </div>
+      </div>
+
+      <div class="book">
+        <div class="cover-wrap"><img src="https://images-na.ssl-images-amazon.com/images/P/B0GS4TH9Y4.01._SCLZZZZZZZ_.jpg" alt="Magical Forest cover"></div>
+        <div class="book-content">
+          <h3>Magical Forest</h3>
+          <p>The first Magical Forest volume is currently in review and will be added as soon as it goes live.</p>
+          <span class="button-disabled">Coming Soon</span>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <section class="section">
+    <h2 class="section-title">Mandala Coloring Books</h2>
+    <p class="section-sub">Mandala books built around calm, motivation, focus, and structured creative flow.</p>
+    <div class="grid">
+
+      <div class="book">
+        <div class="cover-wrap"><img src="https://images-na.ssl-images-amazon.com/images/P/B0GHSDG4P4.01._SCLZZZZZZZ_.jpg" alt="Focus and Flow Mandalas cover"></div>
+        <div class="book-content">
+          <h3>Focus &amp; Flow Mandalas</h3>
+          <p>Mandala coloring book designed to support concentration, calm, and creative flow.</p>
+          <a class="button" href="https://www.amazon.com/dp/B0GHSDG4P4" target="_blank">View on Amazon</a>
+        </div>
+      </div>
+
+      <div class="book">
+        <div class="cover-wrap"><img src="https://images-na.ssl-images-amazon.com/images/P/B0G52J6V19.01._SCLZZZZZZZ_.jpg" alt="Mandala Calm cover"></div>
+        <div class="book-content">
+          <h3>Mandala Calm</h3>
+          <p>Relaxing mandala designs created for mindfulness, stress relief, and peaceful coloring sessions.</p>
+          <a class="button" href="https://www.amazon.com/dp/B0G52J6V19" target="_blank">View on Amazon</a>
+        </div>
+      </div>
+
+      <div class="book">
+        <div class="cover-wrap"><img src="https://images-na.ssl-images-amazon.com/images/P/B0G52N8YD5.01._SCLZZZZZZZ_.jpg" alt="Mandala Boost cover"></div>
+        <div class="book-content">
+          <h3>Mandala Boost</h3>
+          <p>High-energy mandala designs created to support motivation, focus, and mental momentum.</p>
+          <a class="button" href="https://www.amazon.com/dp/B0G52N8YD5" target="_blank">View on Amazon</a>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <section class="section">
+    <h2 class="section-title">City Coloring Books</h2>
+    <p class="section-sub">Urban architecture and city atmosphere translated into relaxing coloring pages.</p>
+    <div class="grid">
+
+      <div class="book">
+        <div class="cover-wrap"><img src="https://images-na.ssl-images-amazon.com/images/P/B0GHSDPV7D.01._SCLZZZZZZZ_.jpg" alt="London Urban Calm cover"></div>
+        <div class="book-content">
+          <h3>London: Urban Calm</h3>
+          <p>A city-themed coloring book inspired by London architecture and peaceful urban scenes.</p>
+          <a class="button" href="https://www.amazon.com/dp/B0GHSDPV7D" target="_blank">View on Amazon</a>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <section class="section">
+    <h2 class="section-title">Badger &amp; Mouse Coloring Adventures</h2>
+    <p class="section-sub">Coloring adventures with Mouse and Badger across seasons, landscapes, and imaginative places.</p>
+    <div class="grid">
+
+      <div class="book">
+        <div class="cover-wrap"><img src="https://images-na.ssl-images-amazon.com/images/P/B0G577Q9GQ.01._SCLZZZZZZZ_.jpg" alt="Spring Adventures cover"></div>
+        <div class="book-content">
+          <h3>Spring Adventures</h3>
+          <p>A cheerful spring coloring book where Badger and Mouse explore flowers, animals, and sunny days in nature.</p>
+          <a class="button" href="https://www.amazon.com/dp/B0G577Q9GQ" target="_blank">View on Amazon</a>
+        </div>
+      </div>
+
+      <div class="book">
+        <div class="cover-wrap"><img src="https://images-na.ssl-images-amazon.com/images/P/B0G4FB41VH.01._SCLZZZZZZZ_.jpg" alt="Winter and Christmas cover"></div>
+        <div class="book-content">
+          <h3>Winter &amp; Christmas Adventures</h3>
+          <p>A cozy winter coloring book with holiday scenes, snowy fun, and woodland celebration.</p>
+          <a class="button" href="https://www.amazon.com/dp/B0G4FB41VH" target="_blank">View on Amazon</a>
+        </div>
+      </div>
+
+      <div class="book">
+        <div class="cover-wrap"><img src="https://images-na.ssl-images-amazon.com/images/P/B0GCG1Y3DT.01._SCLZZZZZZZ_.jpg" alt="African Adventures cover"></div>
+        <div class="book-content">
+          <h3>African Adventures</h3>
+          <p>A fun coloring journey where Badger and Mouse discover African animals and landscapes.</p>
+          <a class="button" href="https://www.amazon.com/dp/B0GCG1Y3DT" target="_blank">View on Amazon</a>
+        </div>
+      </div>
+
+      <div class="book">
+        <div class="cover-wrap"><img src="https://images-na.ssl-images-amazon.com/images/P/B0GCG1Y3DT.01._SCLZZZZZZZ_.jpg" alt="Chinese Adventures cover"></div>
+        <div class="book-content">
+          <h3>Chinese Adventures</h3>
+          <p>Badger and Mouse in a Chinese-inspired coloring journey full of playful discovery.</p>
+          <span class="button-disabled">In Review</span>
+        </div>
+      </div>
+
+      <div class="book">
+        <div class="cover-wrap"><img src="https://images-na.ssl-images-amazon.com/images/P/B0GCG1Y3DT.01._SCLZZZZZZZ_.jpg" alt="Japanese Adventures cover"></div>
+        <div class="book-content">
+          <h3>Japanese Adventures</h3>
+          <p>Badger and Mouse in a Japanese-themed coloring adventure filled with culture, scenery, and charm.</p>
+          <span class="button-disabled">In Review</span>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <section class="section">
+    <h2 class="section-title">Mouse &amp; Badger Story Books</h2>
+    <p class="section-sub">Illustrated forest journeys focused on courage, care, wonder, and emotional depth.</p>
+    <div class="grid">
+
+      <div class="book">
+        <div class="cover-wrap"><img src="https://images-na.ssl-images-amazon.com/images/P/B0GNKN9JZC.01._SCLZZZZZZZ_.jpg" alt="The Glowing Seed cover"></div>
+        <div class="book-content">
+          <h3>The Glowing Seed</h3>
+          <p>An adventure story where Mouse and Badger carry a mysterious glowing seed through the forest.</p>
+          <a class="button" href="https://www.amazon.com/dp/B0GNKN9JZC" target="_blank">View on Amazon</a>
+        </div>
+      </div>
+
+      <div class="book">
+        <div class="cover-wrap"><img src="https://images-na.ssl-images-amazon.com/images/P/B0GNHJS96R.01._SCLZZZZZZZ_.jpg" alt="The Seed That Needed a Place cover"></div>
+        <div class="book-content">
+          <h3>The Seed That Needed a Place</h3>
+          <p>A quiet and emotional journey to restore life to a damaged land.</p>
+          <a class="button" href="https://www.amazon.com/dp/B0GNHJS96R" target="_blank">View on Amazon</a>
+        </div>
+      </div>
+
+      <div class="book">
+        <div class="cover-wrap"><img src="https://images-na.ssl-images-amazon.com/images/P/B0GNLD5TWW.01._SCLZZZZZZZ_.jpg" alt="When the Water Got Loud cover"></div>
+        <div class="book-content">
+          <h3>When the Water Got Loud</h3>
+          <p>A new journey where Mouse and Badger face rising waters and protect their forest home.</p>
+          <a class="button" href="https://www.amazon.com/dp/B0GNLD5TWW" target="_blank">View on Amazon</a>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <section class="section">
+    <h2 class="section-title">Therapeutic Animal Stories</h2>
+    <p class="section-sub">Gentle stories about attention, safety, emotions, and inner experience.</p>
+    <div class="grid">
+
+      <div class="book">
+        <div class="cover-wrap"><img src="https://images-na.ssl-images-amazon.com/images/P/B0GMYSB432.01._SCLZZZZZZZ_.jpg" alt="The Hedgehog Who Had to Look cover"></div>
+        <div class="book-content">
+          <h3>The Hedgehog Who Had to Look</h3>
+          <p>A gentle story about curiosity, attention, and the art of noticing the world.</p>
+          <a class="button" href="https://www.amazon.com/dp/B0GMYSB432" target="_blank">View on Amazon</a>
+        </div>
+      </div>
+
+      <div class="book">
+        <div class="cover-wrap"><img src="https://images-na.ssl-images-amazon.com/images/P/B0GNL259BX.01._SCLZZZZZZZ_.jpg" alt="The Dog Who Had to Watch cover"></div>
+        <div class="book-content">
+          <h3>The Dog Who Had to Watch</h3>
+          <p>A soft therapeutic story about vigilance, safety, and how trust slowly returns.</p>
+          <a class="button" href="https://www.amazon.com/dp/B0GNL259BX" target="_blank">View on Amazon</a>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <div class="note">
+    More books by Tomasz Akwin are added regularly. For the full catalog, search <b>Tomasz Akwin</b> on Amazon.
+  </div>
+
+  <footer>
+    © Tomasz Akwin
+  </footer>
 
 </body>
 </html>
